@@ -7,7 +7,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Tailwind Dashboard",
+  title: "Tailwind Dashboard by Paul-Caleb Otokolo",
   description: "Tailwind Dashboard by Paul-Caleb Otokolo",
 };
 

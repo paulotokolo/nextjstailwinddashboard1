@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, ReactNode } from "react";
+import { motion } from "framer-motion";
 
 interface IconButtonProps {
   children?: ReactNode;
@@ -30,11 +31,13 @@ export default function IconButton({ children, onClick, imageUrl }: IconButtonPr
 
   return (
     <div className="relative inline-block mt-4 align-middle" ref={dropdownRef}>
-      <button
+      <motion.button
         onClick={() => {
           setOpen(!open);
           onClick?.();
         }}
+        whileHover={{ scale: 1.1, rotate: [0, 5, -5, 5, 0], transition: { duration: 0.3 } }}
+        whileTap={{ scale: 0.9 }}
         className={`relative border bg-white rounded-full shadow-md w-12 h-12 flex items-center justify-center ${imageUrl ? "overflow-hidden border-gray-500" : "border-black"}`}
       >
         {imageUrl ? (
@@ -42,17 +45,23 @@ export default function IconButton({ children, onClick, imageUrl }: IconButtonPr
         ) : (
           children
         )}
-      </button>
+      </motion.button>
 
       {imageUrl && open && (
-        <div className="absolute right-0 mt-2 w-32 bg-white border border-gray-300 shadow-md rounded-md">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: -10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: -10 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="absolute right-0 mt-2 w-32 bg-white border border-gray-300 shadow-md rounded-md"
+        >
           <button
             className="w-full px-4 py-2 text-left hover:bg-gray-200"
             onClick={() => alert("Signing out...")}
           >
             Sign Out
           </button>
-        </div>
+        </motion.div>
       )}
       {!imageUrl && (
         <div className="absolute top-1 left-0 w-full h-full bg-gray-500 border border-black rounded-full shadow-lg -z-10"></div>

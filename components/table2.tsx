@@ -8,15 +8,15 @@ export default function Table2() {
           <h2 className="font-bold text-lg text-center">
             Invoices payable to you
           </h2>
-          <div className="border rounded-lg p-3 flex justify-between items-center mt-2">
+          <div className="border rounded-lg p-3 flex justify-between items-center mt-2 hover:bg-gray-200">
             <span>Coming Due</span>
             <span>$0.00</span>
           </div>
-          <div className="border rounded-lg p-3 flex justify-between items-center mt-2">
+          <div className="border rounded-lg p-3 flex justify-between items-center mt-2 hover:bg-gray-200">
             <span>1-30 days overdue</span>
             <span>$0.00</span>
           </div>
-          <div className="border rounded-lg p-3 flex justify-between items-center mt-2">
+          <div className="border rounded-lg p-3 flex justify-between items-center mt-2 hover:bg-gray-200">
             <span>31-60 Overdue</span>
             <span>$0.00</span>
           </div>
@@ -25,15 +25,15 @@ export default function Table2() {
         {/* Bills You Owe Section */}
         <div className="w-1/2">
           <h2 className="font-bold text-lg text-center">Bills you owe</h2>
-          <div className="border rounded-lg p-3 flex justify-between items-center mt-2">
+          <div className="border rounded-lg p-3 flex justify-between items-center mt-2 hover:bg-gray-200">
             <span>Coming Due</span>
             <span>$0.00</span>
           </div>
-          <div className="border rounded-lg p-3 flex justify-between items-center mt-2">
+          <div className="border rounded-lg p-3 flex justify-between items-center mt-2 hover:bg-gray-200">
             <span>1-30 days overdue</span>
             <span>$0.00</span>
           </div>
-          <div className="border rounded-lg p-3 flex justify-between items-center mt-2">
+          <div className="border rounded-lg p-3 flex justify-between items-center mt-2 hover:bg-gray-200">
             <span>31-60 Overdue</span>
             <span>$0.00</span>
           </div>

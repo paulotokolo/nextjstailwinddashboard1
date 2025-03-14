@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 interface DropdownButtonProps {
   id: string; // Unique ID for each dropdown
@@ -36,8 +37,10 @@ export default function DropdownButton({
 
   return (
     <div className="relative inline-block" ref={dropdownRef}>
-      <button
+      <motion.button
         onClick={() => setOpenDropdown(isOpen ? null : id)}
+        whileHover={{ scale: 1.05, rotate: [0, 3, -3, 3, 0], transition: { duration: 0.3 } }}
+        whileTap={{ scale: 0.95 }}
         className="relative flex items-center gap-2 px-3 py-1 text-sm border border-gray-500 bg-white rounded-2xl shadow-md"
       >
         {children}
@@ -53,12 +56,16 @@ export default function DropdownButton({
             clipRule="evenodd"
           />
         </svg>
-      </button>
+      </motion.button>
 
       <div className="absolute top-1 left-1 w-full h-full bg-gray-500 rounded-2xl shadow-lg -z-10"></div>
 
       {isOpen && (
-        <div
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: -10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: -10 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="absolute right-0 z-10 mt-2 w-48 rounded-2xl border border-gray-300 bg-white shadow-lg"
           role="menu"
         >
@@ -84,7 +91,7 @@ export default function DropdownButton({
               </button>
             </form>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );

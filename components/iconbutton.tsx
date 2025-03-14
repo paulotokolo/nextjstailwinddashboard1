@@ -1,5 +1,6 @@
 "use client";
-import { ReactNode, useState } from "react";
+
+import { useState, useEffect, useRef, ReactNode } from "react";
 
 interface IconButtonProps {
   children?: ReactNode;
@@ -9,9 +10,26 @@ interface IconButtonProps {
 
 export default function IconButton({ children, onClick, imageUrl }: IconButtonProps) {
   const [open, setOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
 
   return (
-    <div className="relative inline-block mt-4 align-middle">
+    <div className="relative inline-block mt-4 align-middle" ref={dropdownRef}>
       <button
         onClick={() => {
           setOpen(!open);

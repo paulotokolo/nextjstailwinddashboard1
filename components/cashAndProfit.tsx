@@ -8,8 +8,11 @@ import Calendar from "./calendar";
 import Table from "./table";
 import Chart from "./chart";
 import Table2 from "./table2";
+import { useState } from "react";
 
 export default function CashAndProfit() {
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
   const titles = ["Fiscal Year?", "2020", "2021"];
   const data = [
     { "Fiscal Year?": "Income", "2020": "$44,491.53", "2021": "$244,834.70" },
@@ -30,8 +33,8 @@ export default function CashAndProfit() {
 
           {/* Dropdown Buttons Aligned Right */}
           <div className="flex items-center gap-2">
-            <DropdownButton>1-6 Months</DropdownButton>
-            <DropdownButton>View Report</DropdownButton>
+            <DropdownButton id="dropdown1" openDropdown={openDropdown} setOpenDropdown={setOpenDropdown}>1-6 Months</DropdownButton>
+            <DropdownButton id="dropdown2" openDropdown={openDropdown} setOpenDropdown={setOpenDropdown}>View Report</DropdownButton>
           </div>
         </div>
         <p className="mt-4 text-gray-700">
@@ -84,8 +87,8 @@ export default function CashAndProfit() {
 
           {/* Dropdown Buttons Aligned Right */}
           <div className="flex items-center gap-2">
-            <DropdownButton>1-6 Months</DropdownButton>
-            <DropdownButton>View Report</DropdownButton>
+            <DropdownButton id="dropdown3" openDropdown={openDropdown} setOpenDropdown={setOpenDropdown}>1-6 Months</DropdownButton>
+            <DropdownButton id="dropdown4" openDropdown={openDropdown} setOpenDropdown={setOpenDropdown}>View Report</DropdownButton>
           </div>
         </div>
         <p className="mt-4 text-gray-700">
